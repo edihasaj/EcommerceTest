@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Ecommerce.Models.Cart>
+@using Ecommerce.Repository;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Cart</h3>
+
+<p>
+    <a asp-controller="StockControls" asp-action="Index">Add item in basket</a>
+</p>
+<div style="margin-top:20px;" asp-validation-summary="All" class="text-danger"></div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.Product.RetailPrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ double totalPrice = 0; }
+        @foreach (var item in Model)
+        {
+            totalPrice += item.Quantity * item.Product.Product.RetailPrice;
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemId)
+                </td>
+                <td style="display:inline-flex;">
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                    <form style="margin-left:20px;" asp-action="IncreaseQuantity" asp-route-productId="@item.ProductId">
+                        <input type="hidden" asp-for="@item.ProductId" />
+                        <input type="submit" value="+" style="padding: 0px 5px;" class="btn btn-outline-primary btn-sm" />
+                    </form>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Product.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Product.RetailPrice) <p>&euro;</p>
+                </td>
+                <td>
+                    <form asp-action="Delete" asp-route-id="@item.Id">
+                        <input type="hidden" asp-for="@item.Id" />
+                        <input type="submit" value="Remove" class="btn btn-outline-danger btn-sm" />
+                    </form>
+                </td>
+            </tr>
+        }
+        <tr class="justify-content-end">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="font-weight:bold">
+                <p>@totalPrice &euro;</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@{
+    //var cardItems = ;
+    var hasItems = CartRepository.GetCardItems().Count() > 0 ? "" : "disabled";
+}
+
+<div style="display: flex;justify-content: end;margin-top: 100px;">
+    <!--
+    <button 
+        type="button" 
+        class="btn btn-success @hasItems" 
+        asp-controller="Carts" 
+        asp-action="ProceedOrder">Proceed to checkout</button>
+        -->
+    
+    <a asp-controller="Carts" asp-action="ProceedOrder" class="btn btn-success @hasItems">Proceed to checkout</a>
+
+</div>

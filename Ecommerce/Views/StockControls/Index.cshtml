@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Ecommerce.Models.StockControl>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Stock products control</h3>
+
+<p>
+    <a asp-action="Create">Create new product</a>
+</p>
+<div style="margin-top:20px;" asp-validation-summary="All" class="text-danger"></div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock.StockName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stock.StockName)
+                </td>
+                <td style="min-width:300px;">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    <form style="margin-top:15px;" asp-controller="Carts" asp-action="Create" asp-route-productId="@item.Id">
+                        <input type="hidden" asp-for="@item.Id" />
+                        <input type="submit" value="Add to cart" class="btn btn-outline-success btn-sm" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
