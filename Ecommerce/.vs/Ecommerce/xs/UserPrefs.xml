@@ -1,27 +1,17 @@
 ﻿<Properties StartupConfiguration="{F266F476-BDB4-4A36-A22B-228E4B1924BC}|Default">
   <MonoDevelop.Ide.ItemProperties.Ecommerce PreferredExecutionTarget="/Applications/Microsoft Edge.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Orders/Create.cshtml">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Views/Orders/Create.cshtml" Line="71" Column="43" />
+      <File FileName="Views/Orders/Create.cshtml" Line="64" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Ecommerce" expanded="True">
-            <Node name="Ecommerce" expanded="True">
-              <Node name="Models" expanded="True" />
-              <Node name="Views" expanded="True">
-                <Node name="Customers" expanded="True" />
-                <Node name="Orders" expanded="True">
-                  <Node name="Create.cshtml" selected="True" />
-                </Node>
-              </Node>
-            </Node>
+          <Node name="Ecommerce" expanded="True" selected="True">
+            <Node name="Ecommerce" expanded="True" />
+            <Node name="Tests" expanded="True" />
           </Node>
         </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
