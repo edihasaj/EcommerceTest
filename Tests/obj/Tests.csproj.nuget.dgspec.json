@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Edi\\Desktop\\projects\\ecommerceTesting\\Tests\\Tests.csproj": {}
+    "C:\\Users\\Edi\\Desktop\\projects\\EcommerceTest\\Tests\\Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Edi\\Desktop\\projects\\ecommerceTesting\\Ecommerce\\Ecommerce.csproj": {
+    "C:\\Users\\Edi\\Desktop\\projects\\EcommerceTest\\Ecommerce\\Ecommerce.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Edi\\Desktop\\projects\\ecommerceTesting\\Ecommerce\\Ecommerce.csproj",
+        "projectUniqueName": "C:\\Users\\Edi\\Desktop\\projects\\EcommerceTest\\Ecommerce\\Ecommerce.csproj",
         "projectName": "Ecommerce",
-        "projectPath": "C:\\Users\\Edi\\Desktop\\projects\\ecommerceTesting\\Ecommerce\\Ecommerce.csproj",
+        "projectPath": "C:\\Users\\Edi\\Desktop\\projects\\EcommerceTest\\Ecommerce\\Ecommerce.csproj",
         "packagesPath": "C:\\Users\\Edi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Edi\\Desktop\\projects\\ecommerceTesting\\Ecommerce\\obj\\",
+        "outputPath": "C:\\Users\\Edi\\Desktop\\projects\\EcommerceTest\\Ecommerce\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Edi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -77,14 +77,14 @@
         }
       }
     },
-    "C:\\Users\\Edi\\Desktop\\projects\\ecommerceTesting\\Tests\\Tests.csproj": {
+    "C:\\Users\\Edi\\Desktop\\projects\\EcommerceTest\\Tests\\Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Edi\\Desktop\\projects\\ecommerceTesting\\Tests\\Tests.csproj",
+        "projectUniqueName": "C:\\Users\\Edi\\Desktop\\projects\\EcommerceTest\\Tests\\Tests.csproj",
         "projectName": "Tests",
-        "projectPath": "C:\\Users\\Edi\\Desktop\\projects\\ecommerceTesting\\Tests\\Tests.csproj",
+        "projectPath": "C:\\Users\\Edi\\Desktop\\projects\\EcommerceTest\\Tests\\Tests.csproj",
         "packagesPath": "C:\\Users\\Edi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Edi\\Desktop\\projects\\ecommerceTesting\\Tests\\obj\\",
+        "outputPath": "C:\\Users\\Edi\\Desktop\\projects\\EcommerceTest\\Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Edi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -100,8 +100,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Edi\\Desktop\\projects\\ecommerceTesting\\Ecommerce\\Ecommerce.csproj": {
-                "projectPath": "C:\\Users\\Edi\\Desktop\\projects\\ecommerceTesting\\Ecommerce\\Ecommerce.csproj"
+              "C:\\Users\\Edi\\Desktop\\projects\\EcommerceTest\\Ecommerce\\Ecommerce.csproj": {
+                "projectPath": "C:\\Users\\Edi\\Desktop\\projects\\EcommerceTest\\Ecommerce\\Ecommerce.csproj"
               }
             }
           }

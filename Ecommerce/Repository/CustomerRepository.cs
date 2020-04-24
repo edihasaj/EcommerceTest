@@ -27,7 +27,7 @@ public class CustomerRepository
         }
         else
         {
-            customer.Id = 1;
+            if(customer.Id == 0) customer.Id = 1;
             _customers.Add(customer);
         }
     }
@@ -50,6 +50,11 @@ public class CustomerRepository
     
     public static Customer GetCustomerById(int id)
     {
-        return _customers.Single(x=>x.Id == id);
+        return _customers.FirstOrDefault(c => c.Id == id);
+    }
+    
+    public static Customer GetCustomerByEmail(string email)
+    {
+        return _customers.FirstOrDefault(e => e.Email == email);
     }
 }
