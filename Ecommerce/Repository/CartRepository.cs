@@ -1,4 +1,5 @@
 ﻿using Ecommerce.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -54,5 +55,9 @@ namespace Ecommerce.Repository
         {
             return _cartsList.FirstOrDefault(c => c.ProductId == productId);
         }
+    }
+
+    public class EmptyCartListException : ApplicationException
+    {
     }
 }
