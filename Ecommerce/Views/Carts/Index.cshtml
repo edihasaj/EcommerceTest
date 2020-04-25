@@ -24,10 +24,10 @@
                 @Html.DisplayNameFor(model => model.Quantity)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Product)
+                @Html.DisplayNameFor(model => model.StockControl)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Product.Product.RetailPrice)
+                @Html.DisplayNameFor(model => model.StockControl.Product.RetailPrice)
             </th>
             <th></th>
         </tr>
@@ -36,7 +36,7 @@
         @{ double totalPrice = 0; }
         @foreach (var item in Model)
         {
-            totalPrice += item.Quantity * item.Product.Product.RetailPrice;
+            totalPrice += item.Quantity * item.StockControl.Product.RetailPrice;
 
             <tr>
                 <td>
@@ -47,16 +47,16 @@
                 </td>
                 <td style="display:inline-flex;">
                     @Html.DisplayFor(modelItem => item.Quantity)
-                    <form style="margin-left:20px;" asp-action="IncreaseQuantity" asp-route-productId="@item.ProductId">
-                        <input type="hidden" asp-for="@item.ProductId" />
+                    <form style="margin-left:20px;" asp-action="IncreaseQuantity" asp-route-productId="@item.StockControlId">
+                        <input type="hidden" asp-for="@item.StockControl" />
                         <input type="submit" value="+" style="padding: 0px 5px;" class="btn btn-outline-primary btn-sm" />
                     </form>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Product.Product.Name)
+                    @Html.DisplayFor(modelItem => item.StockControl.Product.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Product.Product.RetailPrice) <p>&euro;</p>
+                    @Html.DisplayFor(modelItem => item.StockControl.Product.RetailPrice) <p>&euro;</p>
                 </td>
                 <td>
                     <form asp-action="Delete" asp-route-id="@item.Id">
@@ -80,7 +80,7 @@
 
 @{
     //var cardItems = ;
-    var hasItems = CartRepository.GetCardItems().Count() > 0 ? "" : "disabled";
+    var hasItems = CartRepository.GetCartItems().Count() > 0 ? "" : "disabled";
 }
 
 <div style="display: flex;justify-content: end;margin-top: 100px;">

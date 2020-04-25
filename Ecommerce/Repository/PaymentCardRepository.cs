@@ -25,15 +25,14 @@ namespace Ecommerce.Repository
 
         public static void Update(PaymentCard paymentCard)
         {
-            //var paymentCardItem = _paymentCard.FirstOrDefault(s => s.Id == paymentCard.Id);
+            var paymentCardItem = _paymentCard.FirstOrDefault(s => s.Id == paymentCard.Id);
 
-            //paymentCardItem.CardNumber = paymentCard.CardNumber;
-            //paymentCardItem.CardName = paymentCard.CardName;
-            //paymentCardItem.CVV = paymentCard.CVV;
-            //paymentCardItem.ExpirationDate = paymentCard.ExpirationDate;
+            paymentCardItem.CardNumber = paymentCard.CardNumber;
+            paymentCardItem.CardName = paymentCard.CardName;
+            paymentCardItem.CVV = paymentCard.CVV;
+            paymentCardItem.ExpirationDate = paymentCard.ExpirationDate;
 
-            _paymentCard.Remove(_paymentCard.Single(x=>x.Id == paymentCard.Id));
-            _paymentCard.Add(paymentCard);
+            // remove tani add ta hek Id ta qet tjeter me ren nese ka tjera rekorde, keshtu qe ka buga tpa dashur
         }
 
         public static void Remove(PaymentCard paymentCard)

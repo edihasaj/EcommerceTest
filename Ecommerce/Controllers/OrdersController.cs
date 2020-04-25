@@ -57,7 +57,7 @@ namespace Ecommerce.Controllers
 
             foreach (var detail in model.CartDetails)
             {
-                model.TotalPrice += detail.Product.Product.RetailPrice * detail.Quantity;
+                model.TotalPrice += detail.StockControl.Product.RetailPrice * detail.Quantity;
             }
 
             OrderRepository.Insert(model);

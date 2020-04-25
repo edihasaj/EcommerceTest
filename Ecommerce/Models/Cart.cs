@@ -8,7 +8,7 @@ namespace Ecommerce.Models
         public int ItemId { get; set; }
         public int Quantity { get; set; }
         public DateTimeOffset CreatedAt { get; set; }
-        public int ProductId { get; set; }
-        public StockControl Product { get; set; }
+        public int StockControlId { get; set; }
+        public StockControl StockControl { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace Ecommerce.Controllers
         // GET: Carts
         public ActionResult Index()
         {
-            return View(CartRepository.GetCardItems());
+            return View(CartRepository.GetCartItems());
         }
 
         // POST: Carts/Create
@@ -23,18 +23,18 @@ namespace Ecommerce.Controllers
         {
             try
             {
-                var cartInList = CartRepository.GetCardItemByProductId(productId);
+                var cartInList = CartRepository.GetCartItemByProductId(productId);
 
                 if (cartInList != null)
                 {
-                    if(cartInList.Product.ProductAmount > cartInList.Quantity) 
+                    if(cartInList.StockControl.ProductAmount > cartInList.Quantity) 
                     {
                         cartInList.Quantity = ++cartInList.Quantity;
                         CartRepository.Update(cartInList);
                     }
                     else
                     {
-                        var stockControls = StockControlRepository.GetStockControls();
+                        var stockControls = Repository.StockControlRepository.GetStockControls();
                         ModelState.AddModelError(string.Empty, "Nuk ka produkt te mjaftueshem ne stok!");
                         return View("~/Views/StockControls/Index.cshtml", stockControls);
                     }
@@ -45,8 +45,8 @@ namespace Ecommerce.Controllers
                     {
                         Quantity = 1,
                         CreatedAt = DateTimeOffset.Now,
-                        ProductId = productId,
-                        Product = StockControlRepository.GetStockControlById(productId)
+                        StockControlId = productId,
+                        StockControl = Repository.StockControlRepository.GetStockControlById(productId)
                     };
 
                     CartRepository.AddToCart(cartItem);
@@ -96,7 +96,7 @@ namespace Ecommerce.Controllers
         {
             try
             {
-                var cartInList = CartRepository.GetCardItemById(id);
+                var cartInList = CartRepository.GetCartItemById(id);
 
                 if (cartInList == null)
                 {
@@ -110,7 +110,7 @@ namespace Ecommerce.Controllers
                 }
                 else
                 {
-                    CartRepository.RemoveCardItem(cartInList);
+                    CartRepository.RemoveCartItem(cartInList);
                 }
 
                 return RedirectToAction(nameof(Index));
@@ -124,7 +124,7 @@ namespace Ecommerce.Controllers
         [HttpGet]
         public IActionResult ProceedOrder()
         {  
-            HttpContext.Session.Set<List<Cart>>("cartV",CartRepository.GetCardItems());
+            HttpContext.Session.Set<List<Cart>>("cartV",CartRepository.GetCartItems());
             return RedirectToAction("Create", "Orders");
         }
 
@@ -135,18 +135,18 @@ namespace Ecommerce.Controllers
         {
             try
             {
-                var cartInList = CartRepository.GetCardItemByProductId(productId);
+                var cartInList = CartRepository.GetCartItemByProductId(productId);
 
                 if (cartInList != null)
                 {
-                    if (cartInList.Product.ProductAmount > cartInList.Quantity)
+                    if (cartInList.StockControl.ProductAmount > cartInList.Quantity)
                     {
                         cartInList.Quantity = ++cartInList.Quantity;
                         CartRepository.Update(cartInList);
                     }
                     else
                     {
-                        var cartItems = CartRepository.GetCardItems();
+                        var cartItems = CartRepository.GetCartItems();
                         ModelState.AddModelError(string.Empty, "Nuk ka produkt te mjaftueshem ne stok!");
                         return View("~/Views/Carts/Index.cshtml", cartItems);
                     }

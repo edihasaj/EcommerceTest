@@ -55,7 +55,6 @@ namespace Ecommerce.Repository
             return _stockControls;
         }
 
-
         public static StockControl GetStockControlById(int id)
         {
             return _stockControls.FirstOrDefault(x => x.Id == id);

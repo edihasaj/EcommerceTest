@@ -27,33 +27,53 @@ namespace Ecommerce.Repository
 
         public static void Update(Cart cart)
         {
-            var cartInList = GetCardItemById(cart.Id);
+            var cartInList = GetCartItemById(cart.Id);
 
             cartInList.Id = cart.Id;
             cartInList.ItemId = cart.ItemId;
             cartInList.Quantity = cart.Quantity;
-            cartInList.ProductId = cart.ProductId;
-            cartInList.Product = cart.Product;
+            cartInList.StockControlId = cart.StockControlId;
+            cartInList.StockControl = cart.StockControl;
         }
 
-        public static void RemoveCardItem(Cart cart)
+        public static void RemoveCartItem(Cart cart)
         {
             _cartsList.Remove(cart);
         }
 
-        public static List<Cart> GetCardItems()
+        public static List<Cart> GetCartItems()
         {
             return _cartsList;
         }
 
-        public static Cart GetCardItemById(int id)
+        public static Cart GetCartItemById(int id)
         {
             return _cartsList.FirstOrDefault(c => c.Id == id);
         }
 
-        public static Cart GetCardItemByProductId(int productId)
+        public static Cart GetCartItemByProductId(int productId)
         {
-            return _cartsList.FirstOrDefault(c => c.ProductId == productId);
+            return _cartsList.FirstOrDefault(c => c.StockControl.Product.Id == productId);
+        }
+
+        public static bool IncreaseQuantity(int productId)
+        {
+            var cartInList = GetCartItemByProductId(productId);
+
+            if (cartInList != null)
+            {
+                if (cartInList.StockControl.ProductAmount > cartInList.Quantity)
+                {
+                    cartInList.Quantity = ++cartInList.Quantity;
+                    Update(cartInList);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
         }
     }
 

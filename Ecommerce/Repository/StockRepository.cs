@@ -1,4 +1,5 @@
 ﻿using Ecommerce.Models;
+using Microsoft.EntityFrameworkCore.Internal;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -46,7 +47,12 @@ namespace Ecommerce.Repository
 
         public static Stock GetStockById(int id)
         {
-            return _stocks.FirstOrDefault(x => x.Id == id);
+            return _stocks.FirstOrDefault(s => s.Id == id);
+        }
+
+        public static Stock GetStockByProductId(int productId)
+        {
+            return _stocks.FirstOrDefault(s => s.StockControls.All(p => p.Product.Id == productId));
         }
     }
 }
