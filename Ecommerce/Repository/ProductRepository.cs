@@ -65,11 +65,11 @@ public class ProductRepository
 
     public static bool IsEmpty()
     {
-        if (_products.Any())
+        if (!_products.Any())
         {
             return true;
         }
 
-        return fale;
+        return false;
     }
 }

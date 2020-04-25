@@ -24,6 +24,20 @@ namespace Ecommerce.Logic
             ProductRepository.Update(product);
         }
 
+        public static int CountProducts()
+        {
+            if (IsEmpty())
+                return -1;
+
+            int result = 0;
+            var repo = ProductRepository.GetProducts();
+
+            foreach (var item in repo)
+                result++;
+
+            return result;
+        }
+
         public static void Remove(Product product)
         {
             if (product == null)
@@ -44,7 +58,14 @@ namespace Ecommerce.Logic
 
             foreach (var item in repo)
             {
-                if (item == product) return true;
+                if (item.Id == product.Id)
+                {
+                    if(item.Name == product.Name)
+                    {
+                        return true;
+                    }
+                }
+                    
             }
 
             return false;
