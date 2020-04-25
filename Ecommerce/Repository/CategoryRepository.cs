@@ -36,6 +36,23 @@ public class CategoryRepository
 
     public static void Update(Category category)
     {
+        _categories.Remove(_categories.Single(x => x.Id == category.Id));
+        _categories.Add(category);
+    }
 
+    public static bool Exists(Category category)
+    {
+        foreach (var item in _categories)
+        {
+
+            if (item.Name == category.Name)
+                if (item.Description == category.Description)
+                    if (item.Items == category.Items)
+                        if (item.Id == category.Id)
+                            return true;
+
+        }
+
+        return false;
     }
 }
