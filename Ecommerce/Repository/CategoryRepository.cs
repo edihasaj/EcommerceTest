@@ -33,4 +33,9 @@ public class CategoryRepository
     {
         return _categories.Single(x=>x.Id == id);
     }
+
+    public static void Update(Category category)
+    {
+
+    }
 }
