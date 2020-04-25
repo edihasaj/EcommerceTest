@@ -62,4 +62,14 @@ public class ProductRepository
     {
         return _products.Count(x=>x.CategoryId == id);
     }
+
+    public static bool IsEmpty()
+    {
+        if (_products.Any())
+        {
+            return true;
+        }
+
+        return fale;
+    }
 }
