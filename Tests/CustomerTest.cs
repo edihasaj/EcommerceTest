@@ -45,7 +45,7 @@ namespace Tests
         {
             customersList = CustomerRepository.GetCustomers();
 
-            Assert.AreEqual(customersList.Count(), 2);
+            Assert.AreEqual(2, customersList.Count());
         }
 
         [Test]
@@ -63,6 +63,16 @@ namespace Tests
 
             Assert.IsNotNull(customer);
         }
+        
+        [Test]
+        public void GetCustomerByName()
+        {
+            var result = CustomerRepository.
+                GetCustomers()
+                .Single(x=>x.FirstName == "Dren");
+
+            Assert.AreEqual("Dren", result.FirstName);
+        }
 
         [Test]
         public void InsertCustomerWithoutIdTest()
@@ -74,32 +84,25 @@ namespace Tests
         }
 
         [Test]
-        public void InsertCustomerTest()
+        public void InsertCustomer()
         {
             CustomerRepository.Insert(customer);
             var customerFromList = CustomerRepository.GetCustomerById(customer.Id);
 
-            Assert.AreEqual(customer.FirstName, customerFromList.FirstName);
+            Assert.AreEqual(customer, customerFromList);
         }
 
         [Test]
-        public void UpdateCustomerTest()
+        public void UpdateCustomer()
         {
-            CustomerRepository.Insert(customer);
-            var customerFromList = CustomerRepository.GetCustomerById(customer.Id);
-            
-            customerFromList.FirstName = customerToUpdate.FirstName;
-            customerFromList.LastName = customerToUpdate.LastName;
-            customerFromList.Address = customerToUpdate.Address;
-            customerFromList.Email = customerToUpdate.Email;
-            CustomerRepository.Update(customerFromList);
+            CustomerRepository.Update(customerToUpdate);
 
             var updatedCustomer = CustomerRepository.GetCustomerById(customer.Id);
-            Assert.AreEqual(customerFromList, updatedCustomer);
+            Assert.AreEqual(customerToUpdate, updatedCustomer);
         }
 
         [Test]
-        public void RemoveCustomerTest()
+        public void RemoveCustomer()
         {
             CustomerRepository.Insert(customer);
             var customerFromList = CustomerRepository.GetCustomerById(customer.Id);
