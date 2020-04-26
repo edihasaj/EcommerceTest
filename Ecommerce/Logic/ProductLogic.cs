@@ -7,7 +7,7 @@ namespace Ecommerce.Logic
     {
         public static void Insert(Product product)
         {
-            if (product == null)
+            if (!Validate(product))
                 return;
 
             if (Exists(product))
@@ -18,7 +18,10 @@ namespace Ecommerce.Logic
 
         public static void Update(Product product)
         {
-            if (product == null)
+            if (!Validate(product))
+                return;
+
+            if (Exists(product))
                 return;
 
             ProductRepository.Update(product);
@@ -40,9 +43,6 @@ namespace Ecommerce.Logic
 
         public static void Remove(Product product)
         {
-            if (product == null)
-                return;
-
             if (Exists(product))
                 ProductRepository.Remove(product);
         }
@@ -65,7 +65,6 @@ namespace Ecommerce.Logic
                         return true;
                     }
                 }
-                    
             }
 
             return false;
@@ -79,6 +78,28 @@ namespace Ecommerce.Logic
             }
 
             return ProductRepository.GetProducts();
+        }
+
+        public static Product GetProductById(int id)
+        {
+            return ProductRepository.GetProductById(id);
+        }
+
+        private static bool Validate(Product product)
+        {
+            if (string.IsNullOrEmpty(product.Name))
+                return false;
+
+            if (string.IsNullOrEmpty(product.Description))
+                return false;
+
+            if (product.RetailPrice <= 0)
+                return false;
+
+            if (product.PurchasePrice <= 0)
+                return false;
+
+            return true;
         }
     }
 }

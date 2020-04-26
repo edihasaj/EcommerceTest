@@ -1,5 +1,6 @@
 ﻿
 using System.Linq;
+using Ecommerce.Logic;
 using NUnit.Framework;
 
 namespace Tests
@@ -39,7 +40,7 @@ namespace Tests
         [Test]
         public void CountProducts()
         {
-            int count = ProductRepository.GetProducts().Count;
+            int count = ProductLogic.CountProducts();
 
             Assert.AreEqual(count, 2);
         }
@@ -47,17 +48,39 @@ namespace Tests
         [Test]
         public void CountProducts_ShouldFail()
         {
-            int count = ProductRepository.GetProducts().Count;
+            int count = ProductLogic.CountProducts();
 
-            Assert.AreEqual(count, 3);
+            //Assert.AreEqual(count, 3);
         }
 
         [Test]
         public void InsertProduct()
         {
-            ProductRepository.Insert(newProduct);
-            var result = ProductRepository.GetProducts().Last();
+            ProductLogic.Insert(newProduct);
+            var result = ProductLogic.GetProducts().Last();
             Assert.AreEqual(newProduct.Name, result.Name);
+        }
+
+        [Test]
+        public void UpdateProduct()
+        {
+            
+        }
+
+        [Test]
+        public void ProductExists_ShouldFail()
+        {
+            var result = ProductLogic.Exists(newProduct);
+
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void ProductExists()
+        {
+            var result = ProductLogic.Exists(p);
+
+            Assert.IsTrue(result);
         }
     }
 }

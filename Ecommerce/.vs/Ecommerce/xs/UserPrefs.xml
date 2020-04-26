@@ -1,8 +1,10 @@
 ﻿<Properties StartupConfiguration="{F266F476-BDB4-4A36-A22B-228E4B1924BC}|Default">
   <MonoDevelop.Ide.ItemProperties.Ecommerce PreferredExecutionTarget="/Applications/Microsoft Edge.app" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Logic/ProductLogic.cs">
     <Files>
-      <File FileName="../Tests/ProductTest.cs" Line="1" Column="1" />
+      <File FileName="Logic/ProductLogic.cs" Line="59" Column="1" />
+      <File FileName="../Tests/ProductTest.cs" />
+      <File FileName="Repository/ProductRepository.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -10,6 +12,7 @@
           <Node name="Ecommerce" expanded="True">
             <Node name="Ecommerce" expanded="True">
               <Node name="Logic" expanded="True" />
+              <Node name="Models" expanded="True" />
               <Node name="Repository" expanded="True" />
             </Node>
             <Node name="Tests" expanded="True">
@@ -20,17 +23,7 @@
       </Pad>
       <Pad Id="MonoDevelop.UnitTesting.TestPad">
         <State name="__root__">
-          <Node name="Ecommerce" expanded="True">
-            <Node name="Tests" expanded="True">
-              <Node name="Tests" expanded="True">
-                <Node name="CategoryTest" expanded="True" />
-                <Node name="CustomerTest" expanded="True" />
-                <Node name="ProductTest" expanded="True">
-                  <Node name="ProductExists_ShouldFail" selected="True" />
-                </Node>
-              </Node>
-            </Node>
-          </Node>
+          <Node name="Ecommerce" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
@@ -38,9 +31,7 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/drenhaziri/Desktop/EcommerceTest/Tests/ProductTest.cs" line="81" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

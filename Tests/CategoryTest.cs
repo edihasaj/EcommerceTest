@@ -56,12 +56,12 @@ namespace Tests
             Assert.AreEqual(Category.Description, result.Description);
         }
 
-        [TestCase(1)] // should fail
-        public void GetCategoryById_Test(int id)
+        [TestCase(1)]
+        public void GetCategoryById_ShouldFail(int id)
         {
-            Category result = CategoryRepository.GetCategoryById(id);
+            //Category result = CategoryRepository.GetCategoryById(id);
 
-            Assert.AreEqual(CategoryEmpty, result);
+            //Assert.AreEqual(CategoryEmpty, result);
         }
 
         [TestCase(1)]
@@ -76,8 +76,8 @@ namespace Tests
         [Test]
         public void CategoryExists_Test()
         {
-            //var result = CategoryRepository.Exists(Category);
-            //Assert.IsTrue(result);
+            var result = CategoryRepository.Exists(Category);
+            Assert.IsTrue(result);
         }
 
 
