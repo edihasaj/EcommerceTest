@@ -49,13 +49,13 @@ namespace Ecommerce.Logic
 
         public static bool Exists(Product product)
         {
-            var repo = ProductRepository.GetProducts();
+            var list = ProductRepository.GetProducts();
 
-            foreach (var item in repo)
+            foreach (var item in list)
             {
                 if (item.Id == product.Id)
                 {
-                    if(item.Name == product.Name)
+                    if (item.Name == product.Name)
                     {
                         return true;
                     }

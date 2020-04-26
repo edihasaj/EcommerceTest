@@ -53,7 +53,7 @@ namespace Tests
         {
             int count = ProductLogic.CountProducts();
 
-            Assert.AreEqual(count, 2);
+            Assert.AreEqual(2, count);
         }
 
         [Test]
@@ -61,7 +61,7 @@ namespace Tests
         {
             int count = ProductLogic.CountProducts();
 
-            Assert.AreNotEqual(count, -1);
+            Assert.AreNotEqual(-1, count);
         }
 
         [Test]
