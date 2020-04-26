@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Ecommerce.Logic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Session;
@@ -15,7 +16,7 @@ namespace Ecommerce.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            var products = ProductRepository.GetProducts();
+            var products = ProductLogic.GetProducts();
 
             foreach (var item in products)
             {
@@ -28,7 +29,7 @@ namespace Ecommerce.Controllers
         // GET: Products/Details/5
         public ActionResult Details(int id)
         {
-            var product = ProductRepository.GetProductById(id);
+            var product = ProductLogic.GetProductById(id);
 
             return View(product);
         }
@@ -76,7 +77,7 @@ namespace Ecommerce.Controllers
         {
             try
             {
-                ProductRepository.Insert(product);
+                ProductLogic.Insert(product);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -90,7 +91,7 @@ namespace Ecommerce.Controllers
         // GET: Products/Edit/5
         public ActionResult Edit(int id)
         {
-            var product = ProductRepository.GetProductById(id);
+            var product = ProductLogic.GetProductById(id);
 
             return View(product);
         }
@@ -102,7 +103,7 @@ namespace Ecommerce.Controllers
         {
             try
             {
-                ProductRepository.Update(product);
+                ProductLogic.Update(product);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -115,7 +116,7 @@ namespace Ecommerce.Controllers
         // GET: Products/Delete/5
         public ActionResult Delete(int id)
         {
-            var product = ProductRepository.GetProductById(id);
+            var product = ProductLogic.GetProductById(id);
 
             return View(product);
         }
@@ -129,7 +130,7 @@ namespace Ecommerce.Controllers
 
             try
             {
-                ProductRepository.Remove(product);
+                ProductLogic.Remove(product);
 
                 return RedirectToAction(nameof(Index));
             }

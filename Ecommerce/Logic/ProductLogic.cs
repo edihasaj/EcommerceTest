@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Ecommerce.Logic
 {
@@ -32,13 +33,7 @@ namespace Ecommerce.Logic
             if (IsEmpty())
                 return -1;
 
-            int result = 0;
-            var repo = ProductRepository.GetProducts();
-
-            foreach (var item in repo)
-                result++;
-
-            return result;
+            return ProductRepository.GetProducts().Count();
         }
 
         public static void Remove(Product product)
@@ -96,10 +91,7 @@ namespace Ecommerce.Logic
             if (product.RetailPrice <= 0)
                 return false;
 
-            if (product.PurchasePrice <= 0)
-                return false;
-
-            return true;
+            return !(product.PurchasePrice <= 0);
         }
     }
 }

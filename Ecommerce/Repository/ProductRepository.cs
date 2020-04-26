@@ -50,12 +50,15 @@ public class ProductRepository
 
     public static Product GetProductById(int id)
     {
-        //return _products.Single(x=>x.Id == id);
-        foreach(var item in _products)
-            if(item.Id == id)
+        foreach (var item in _products)
+        {
+            if (item.Id == id)
+            {
                 return item;
+            }
+        }
 
-        throw new System.Exception();
+        throw new System.NullReferenceException();
     }
 
     public static int CountProductsByCategoryId(int id)
@@ -65,11 +68,6 @@ public class ProductRepository
 
     public static bool IsEmpty()
     {
-        if (!_products.Any())
-        {
-            return true;
-        }
-
-        return false;
+        return !_products.Any();
     }
 }
