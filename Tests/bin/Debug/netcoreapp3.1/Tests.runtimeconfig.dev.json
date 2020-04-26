@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "/Users/drenhaziri/.dotnet/store/|arch|/|tfm|",
-      "/Users/drenhaziri/.nuget/packages"
+      "C:\\Users\\Edi\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Edi\\.nuget\\packages"
     ]
   }
 }
