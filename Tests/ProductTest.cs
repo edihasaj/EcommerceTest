@@ -11,6 +11,7 @@ namespace Tests
         Product p;
         Product pEmpty;
         Product newProduct;
+        Product pUpdate;
 
         [SetUp]
         public void SetUp()
@@ -20,6 +21,16 @@ namespace Tests
                 Id = 1,
                 Name = "Macbook Air",
                 Description = "Diqka",
+                PurchasePrice = 899,
+                RetailPrice = 999,
+                CategoryId = 1
+            };
+
+            pUpdate = new Product()
+            {
+                Id = 1,
+                Name = "Macbook Air UPDATE",
+                Description = "Diqka UPDATE",
                 PurchasePrice = 899,
                 RetailPrice = 999,
                 CategoryId = 1
@@ -46,11 +57,19 @@ namespace Tests
         }
 
         [Test]
+        public void CountProducts_Empty()
+        {
+            int count = ProductLogic.CountProducts();
+
+            Assert.AreNotEqual(count, -1);
+        }
+
+        [Test]
         public void CountProducts_ShouldFail()
         {
             int count = ProductLogic.CountProducts();
 
-            //Assert.AreEqual(count, 3);
+            Assert.AreEqual(count, 3);
         }
 
         [Test]
@@ -62,9 +81,31 @@ namespace Tests
         }
 
         [Test]
+        public void InsertProduct_Empty()
+        {
+            ProductLogic.Insert(pEmpty);
+            var result = ProductLogic.GetProducts().Last();
+            Assert.AreNotEqual(pEmpty, result);
+        }
+
+        [Test]
         public void UpdateProduct()
         {
-            
+            //var beforeUpdate = ProductRepository.GetProductById(p.Id);
+            ProductLogic.Update(pUpdate);
+            var afterUpdate = ProductLogic.GetProductById(p.Id);
+
+            Assert.AreEqual(pUpdate, afterUpdate);
+        }
+
+        [Test]
+        public void UpdateProduct_Exists()
+        {
+            //var beforeUpdate = ProductRepository.GetProductById(p.Id);
+            ProductLogic.Update(p);
+            var afterUpdate = ProductLogic.GetProductById(p.Id);
+
+            Assert.AreEqual(p.Name, afterUpdate.Name);
         }
 
         [Test]
