@@ -9,7 +9,7 @@ public class OrderRepository
 
     public static void Insert(Order order)
     {
-        if (_orders.Count < 1)
+        if (!_orders.Any())
         {
             order.Id = 1;
             _orders.Add(order);

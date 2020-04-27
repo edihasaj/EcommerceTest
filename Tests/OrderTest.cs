@@ -26,10 +26,7 @@ namespace Tests
                     CustomerRepository.GetCustomerById(1),
                     CustomerRepository.GetCustomerById(2),
                 },
-                Products = new List<Product>()
-                {
-                    ProductRepository.GetProductById(1)
-                },
+                Products = ProductRepository.GetProducts(),
                 Date = DateTime.Now,
                 DeliveryAddress = "Prishtine",
                 TotalPrice = 2999,
@@ -50,14 +47,11 @@ namespace Tests
         {
             orderList = OrderRepository.GetOrders();
 
-            if (orderList.Count() <= 0)
-                Assert.IsEmpty(orderList);
-            else
-                Assert.IsNotEmpty(orderList);
+            Assert.AreEqual(0, orderList.Count);
         }
 
         [Test]
-        public void GetOrderByIdTest()
+        public void GetOrderById()
         {
             OrderRepository.Insert(order);
 
@@ -76,7 +70,7 @@ namespace Tests
         }
 
         [Test]
-        public void UpdateOrderTest()
+        public void UpdateOrder()
         {
             OrderRepository.Insert(order);
             var orderFromList = OrderRepository.GetOrderById(order.Id);
@@ -93,7 +87,7 @@ namespace Tests
         }
 
         [Test]
-        public void RemoveCustomerTest()
+        public void RemoveOrderTest()
         {
             OrderRepository.Insert(order);
             var orderFromList = OrderRepository.GetOrderById(order.Id);

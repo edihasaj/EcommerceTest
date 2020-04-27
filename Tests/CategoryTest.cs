@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 
 namespace Tests
@@ -10,6 +11,7 @@ namespace Tests
         Category Category;
         Category CategoryEmpty;
         Category CategoryUpdate;
+        Category CategoryNew;
 
         [SetUp]
         public void SetUp()
@@ -19,6 +21,13 @@ namespace Tests
                 Id = 1,
                 Name = "Tech",
                 Description = "Technology products",
+                Items = 0
+            };
+
+            CategoryNew = new Category()
+            {
+                Name = "Fiction",
+                Description = "Ficprod",
                 Items = 0
             };
 
@@ -59,9 +68,9 @@ namespace Tests
         [TestCase(1)]
         public void GetCategoryById_ShouldFail(int id)
         {
-            //Category result = CategoryRepository.GetCategoryById(id);
+            Category result = CategoryRepository.GetCategoryById(id);
 
-            //Assert.AreEqual(CategoryEmpty, result);
+            Assert.AreEqual(CategoryEmpty, result);
         }
 
         [TestCase(1)]
@@ -80,7 +89,13 @@ namespace Tests
             Assert.IsTrue(result);
         }
 
+        [Test]
+        public void CategoryInsert()
+        {
+            CategoryRepository.Insert(CategoryNew);
 
-
+            var result = CategoryRepository.GetCategories().Last();
+            Assert.AreEqual(CategoryNew, result);
+        }
     }
 }
